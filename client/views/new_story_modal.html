@@ -1,0 +1,88 @@
+<template name="new_story_modal">
+  <div class="ui new_story modal transition">
+    <i class="close icon"></i>
+    <div class="header">
+      New Story
+    </div>
+    <div class="content">
+      <div class="ui form">
+        <div class="ui grid">
+          <div class="row">
+            <div class="ten wide column">
+              <div class="field">
+                <label>Name</label>
+                <div class="ui labeled input">
+                  <input type="text">
+                  <div class="ui corner label">
+                    <i class="icon asterisk"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Story Description</label>
+                <textarea id="project_description"></textarea>
+              </div>
+            </div>
+            <div class="six wide column">
+              <div class="field">
+                <label>Story Type</label>
+                <div class="ui selection dropdown">
+                  <input type="hidden" name="gender">
+                  <div class="text"><i class="bullseye icon"></i> Feature</div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <div class="item" data-value="0"><i class="bullseye icon"></i> Feature</div>
+                    <div class="item active" data-value="1"><i class="bug icon"></i> Bug</div>
+                    <div class="item active" data-value="2"><i class="coffee icon"></i> Chore</div>
+                    <div class="item active" data-value="3"><i class="magic icon"></i> Release</div>
+                  </div><!-- dropdown -->
+                </div><!-- field -->
+              </div><!-- column -->
+              <div class="field">
+                <label>Points</label>
+                <div class="ui selection dropdown">
+                  <input type="hidden" name="gender">
+                  <div class="text"><i class="empty star icon"></i> 1 point</div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <div class="item active" data-value="0"><i class="empty star icon"></i> 1 point</div>
+                    <div class="item active" data-value="1"><i class="half empty star icon"></i> 2 points</div>
+                    <div class="item active" data-value="2"><i class="star icon"></i> 3 points</div>
+                  </div><!-- menu -->
+                </div><!-- dropdown -->
+              </div><!-- field -->
+              <div class="search"><!-- search -->
+                <div class="field"><!-- field -->
+                  <label>Owner</label>
+                  <div class="ui input"><!-- input -->
+                    <input class="prompt" type="text" name="query" autocomplete="off" placeholder="Search...">
+                  </div><!-- input -->
+                  <div class="results"></div>
+                </div><!-- field -->
+              </div><!-- search -->
+              <div class="search"><!-- search -->
+                <div class="field"><!-- field -->
+                  <label>Owner</label>
+                  <div class="ui input"><!-- input -->
+                    <input class="prompt" type="text" name="query" autocomplete="off" placeholder="Search...">
+                  </div><!-- input -->
+                  <div class="results"></div>
+                </div><!-- field -->
+              </div><!-- search -->
+            </div>
+          </div><!-- row -->
+        </div><!-- grid -->
+
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui black button">
+        Cancel
+      </div>
+      <div class="ui positive right labeled icon button new_project_submit">
+        Add Project
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,63 @@
+<template name="home">
+  <div class="container" style="padding-top:20px;">
+    {{#if currentUser}}
+      <div class="ui grid">
+        <div class="row">
+          <div class="ten wide column">
+            <h1 class="ui header blue">
+              <img class="circular ui image" width="70" height="70" style="float:left; margin-right:5px" src="{{currentUser.profile.avatar_url}}"></i>
+              Hey {{currentUser.profile.name}}
+              <div class="sub header">Welcome to your dashboard.</div>
+            </h1>
+            <h2 class="ui header">
+              Recent Activity
+            </h2>
+            <div class="ui piled feed segment">
+              {{#each updates}}
+                <div class="event">
+                  <div class="label">
+                    <i class="circular {{type}} icon"></i>
+                  </div>
+                  <div class="content">
+                    <div class="date timeago" data-timestamp="{{createdat}}">
+                      ago
+                    </div>
+                    <div class="summary">
+                       {{{details}}}
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="six wide column">
+            <div class="ui secondary stacked segment">
+              <h2>Your Projects</h2>
+              {{#if has_projects}}
+                <div class="ui list" style="margin-bottom:20px">
+                  {{#each user_projects}}
+                    <div class="item">
+                      <i class="mail outline icon"></i>
+                      <div class="content">
+                        <a class="header" href="/project/{{slug}}">{{name}}</a>
+                        <div class="description">{{description}}</div>
+                      </div>
+                    </div>
+                  {{/each}}
+                </div>
+              {{else}}
+                <p>You haven't got any projects yet. Better go create some.</p>
+              {{/if}}
+              <div class="circular green ui button launch_modal">
+                <i class="add icon"></i>
+                Create new Project
+              </div>
+            </div>
+          </div>
+        </div>
+      {{else}}
+
+      {{/if}}
+    </div>
+  </div>
+</template>

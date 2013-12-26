@@ -1,0 +1,39 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "semantic-ui-less": {},
+      "iron-router": {},
+      "github-api": {},
+      "moment": {},
+      "urlify2": {}
+    },
+    "packages": {
+      "semantic-ui-less": {
+        "git": "https://github.com/nooitaf/meteor-semantic-ui-less.git",
+        "tag": "v0.10.2",
+        "commit": "45de3b9515415251065aea9cb1b30b9b23aa577d"
+      },
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.6.1",
+        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
+      },
+      "github-api": {
+        "git": "https://github.com/ndhoule/meteor-github-api.git",
+        "tag": "v0.1.11",
+        "commit": "3f72e744cdf4aca0e77cc39022ed6f3b53200734"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.2.1",
+        "commit": "9ee12e714afe56b189f53076447b7b54f3012065"
+      },
+      "urlify2": {
+        "git": "https://github.com/peerlibrary/meteor-urlify2.git",
+        "tag": "v0.1.1",
+        "commit": "5b6677b01382e470bd22e6a4a8a0d4399d7900d7"
+      }
+    }
+  }
+}

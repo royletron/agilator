@@ -1,0 +1,34 @@
+<template name="new_project_modal">
+  <div class="ui new_project modal transition">
+    <i class="close icon"></i>
+    <div class="header">
+      New Project
+    </div>
+    <div class="content">
+      <div class="ui form">
+        <div class="field">
+          <label>Project Name</label>
+          <div class="ui labeled input">
+            <input type="text" id="project_name">
+            <div class="ui corner label">
+              <i class="icon asterisk"></i>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Project Description</label>
+          <textarea id="project_description"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui black button">
+        Cancel
+      </div>
+      <div class="ui positive right labeled icon button new_project_submit">
+        Add Project
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
+</template>
