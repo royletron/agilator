@@ -9,6 +9,31 @@
   {{> navigation}}
   {{{yield}}}
   {{yield 'modal'}}
+  <div class="ui confirmation modal transition hidden" style="margin-top: 0px;">
+    <div class="header">
+      Change Your Homepage
+    </div>
+    <div class="content">
+      <div class="left">
+        <i class="attention icon"></i>
+      </div>
+      <div class="right body-text">
+        <p>Are you sure you want to change your homepage to <b>Poodle.com</b>?</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="two fluid ui buttons">
+        <div class="ui negative labeled icon button">
+          <i class="remove icon"></i>
+          No
+        </div>
+        <div class="ui positive right labeled icon button">
+          Yes
+          <i class="checkmark icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 

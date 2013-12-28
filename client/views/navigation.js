@@ -19,7 +19,7 @@ Template.navigation.events({
             Meteor.users.update(Meteor.userId(), { $set: {profile: val} });
             if(Updates.find({user: Meteor.userId()}).fetch().length == 0)
             {
-              Meteor.call("createUpdate", "lightbulb", "You joined!")
+              Meteor.call("createUpdate", "lightbulb", "joined!")
             }
           }
         })

@@ -8,11 +8,11 @@
       <div class="ui form">
         <div class="ui grid">
           <div class="row">
-            <div class="ten wide column">
+            <div class="eleven wide column">
               <div class="field">
                 <label>Name</label>
                 <div class="ui labeled input">
-                  <input type="text">
+                  <input type="text" id="story_name">
                   <div class="ui corner label">
                     <i class="icon asterisk"></i>
                   </div>
@@ -20,14 +20,14 @@
               </div>
               <div class="field">
                 <label>Story Description</label>
-                <textarea id="project_description"></textarea>
+                <textarea id="story_description" style="height:140px;"></textarea>
               </div>
             </div>
-            <div class="six wide column">
+            <div class="five wide column">
               <div class="field">
                 <label>Story Type</label>
-                <div class="ui selection dropdown">
-                  <input type="hidden" name="gender">
+                <div class="ui selection dropdown fluid">
+                  <input type="hidden" name="type" id="story_type" value="0">
                   <div class="text"><i class="bullseye icon"></i> Feature</div>
                   <i class="dropdown icon"></i>
                   <div class="menu">
@@ -40,35 +40,43 @@
               </div><!-- column -->
               <div class="field">
                 <label>Points</label>
-                <div class="ui selection dropdown">
-                  <input type="hidden" name="gender">
+                <div class="ui selection dropdown fluid">
+                  <input type="hidden" name="points" id="story_points" value="0">
                   <div class="text"><i class="empty star icon"></i> 1 point</div>
                   <i class="dropdown icon"></i>
                   <div class="menu">
                     <div class="item active" data-value="0"><i class="empty star icon"></i> 1 point</div>
-                    <div class="item active" data-value="1"><i class="half empty star icon"></i> 2 points</div>
-                    <div class="item active" data-value="2"><i class="star icon"></i> 3 points</div>
+                    <div class="item" data-value="1"><i class="half empty star icon"></i> 2 points</div>
+                    <div class="item" data-value="2"><i class="star icon"></i> 3 points</div>
                   </div><!-- menu -->
                 </div><!-- dropdown -->
               </div><!-- field -->
-              <div class="search"><!-- search -->
-                <div class="field"><!-- field -->
-                  <label>Owner</label>
-                  <div class="ui input"><!-- input -->
-                    <input class="prompt" type="text" name="query" autocomplete="off" placeholder="Search...">
-                  </div><!-- input -->
-                  <div class="results"></div>
-                </div><!-- field -->
-              </div><!-- search -->
-              <div class="search"><!-- search -->
-                <div class="field"><!-- field -->
-                  <label>Owner</label>
-                  <div class="ui input"><!-- input -->
-                    <input class="prompt" type="text" name="query" autocomplete="off" placeholder="Search...">
-                  </div><!-- input -->
-                  <div class="results"></div>
-                </div><!-- field -->
-              </div><!-- search -->
+              <div class="field"><!-- field -->
+                <label>Requester</label>
+                <div class="ui selection dropdown fluid">
+                  <input type="hidden" name="requester" id="story_requester" value="{{ currentUser._id }}">
+                  <div class="text">{{ currentUser.profile.name }}</div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    {{#each members}}
+                      <div class="item active" data-value="{{ id }}"><img class="circular ui image" src="{{ avatar }}" height="30" width="30" style="float:left; margin-top: -7px; margin-right:0.5em; height:30px; width:30px"> {{ name }}</div>
+                    {{/each}}
+                  </div><!-- menu -->
+                </div><!-- dropdown -->
+              </div><!-- field -->
+              <div class="field"><!-- field -->
+                <label>Owner</label>
+                <div class="ui selection dropdown fluid">
+                  <input type="hidden" name="owner" id="story_owner" value="{{ currentUser._id }}">
+                  <div class="text">{{ currentUser.profile.name }}</div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    {{#each members}}
+                      <div class="item active" data-value="0"><img class="circular ui image" src="{{ avatar }}" height="30" width="30" style="float:left; margin-top: -7px; margin-right:0.5em; height:30px; width:30px"> {{ name }}</div>
+                    {{/each}}
+                  </div><!-- menu -->
+                </div><!-- dropdown -->
+              </div><!-- field -->
             </div>
           </div><!-- row -->
         </div><!-- grid -->
@@ -79,7 +87,7 @@
       <div class="ui black button">
         Cancel
       </div>
-      <div class="ui positive right labeled icon button new_project_submit">
+      <div class="ui positive right labeled icon button new_story_submit">
         Add Project
         <i class="checkmark icon"></i>
       </div>

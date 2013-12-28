@@ -11,3 +11,9 @@ Template.home.rendered = function(){
   $modal = $('.new_project.modal')
   $modal.modal('attach events', '.launch_modal.button', 'show')
 }
+Template.home.user_name = function(user){
+  if(user._id == Meteor.userId())
+    return 'You'
+  else
+    return user.profile.name;
+}

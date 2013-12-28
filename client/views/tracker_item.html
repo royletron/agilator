@@ -1,0 +1,11 @@
+<template name="tracker_item">
+  {{#if newStatus}}
+    <div class="item"><a class="ui inverted mini basic button start_button" style="float:right; margin-top:-6px;">Start</a> {{name}}</div>
+  {{/if}}
+  {{#if startedStatus}}
+    <div class="item"><a class="ui inverted mini basic button finish_button" style="float:right; margin-top:-6px;">Finish</a> {{name}}</div>
+  {{/if}}
+  {{#if finishedStatus}}
+    <div class="item"><a class="ui inverted mini basic button deliver_button" style="float:right; margin-top:-6px;">Deliver</a> {{name}}</div>
+  {{/if}}
+</template>

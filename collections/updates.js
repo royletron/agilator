@@ -1,10 +1,12 @@
 Updates = new Meteor.Collection("updates")
 
 Meteor.methods({
-  createUpdate: function(type, details)
+  createUpdate: function(type, details, item, item_type)
   {
     return Updates.insert({
       user: Meteor.userId(),
+      item: item,
+      item_type: item_type,
       type: type,
       details: details,
       createdat: moment().unix()
@@ -12,6 +14,14 @@ Meteor.methods({
   },
   userUpdates: function()
   {
-    return Updates.find({user: Meteor.userId()}).fetch();
+    var updates = Updates.find({user: Meteor.userId()}, {sort: {createdat: -1}}).fetch();
+    for(var i = 0; i < updates.length; i++)
+    {
+      updates[i].user = Meteor.users.findOne(updates[i].user);
+    }
+    return updates;
+  },
+  removeAllUpdates: function() {
+    return Updates.remove({});
   }
 })

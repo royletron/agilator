@@ -17,7 +17,12 @@ Router.map(function () {
     before: function() {
       if(Meteor.user())
       {
-        Session.set("user_updates", Updates.find({user: Meteor.userId()}, {sort: {createdat: -1}}).fetch());
+        var updates = Updates.find({user: Meteor.userId()}, {sort: {createdat: -1}}).fetch();
+        for(var i = 0; i < updates.length; i++)
+        {
+          updates[i].user = Meteor.users.findOne(updates[i].user);
+        }
+        Session.set("user_updates", updates);
         Session.set("user_projects", Projects.find({owner: Meteor.userId()}).fetch());
       }
     }

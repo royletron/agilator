@@ -1,4 +1,3 @@
-var $modal;
 Template.new_project_modal.events({
   'click .new_project_submit' : function(e, t)
   {
@@ -10,6 +9,7 @@ Template.new_project_modal.events({
     else
     {
       Meteor.call('createProject', $('#project_name').val(), $('#project_description').val())
+      toastr.success("Created project '"+$('#project_name').val()+"'")
     }
   }
 })

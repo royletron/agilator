@@ -3,37 +3,36 @@
   <div class="container">
     <div class="ui three column grid">
       <div class="column">
-        <div class="ui segment">
-          <div class="ui top attached teal label">
-            <i class="circular inverted teal users icon"></i> Current 
+        <div class="ui teal inverted vertical menu fluid">
+          <div class="header item">
+            <i class="teal users icon" style="float:left; margin-left:-5px; margin-right:10px"></i> Current
           </div>
-          <div class="ui comments">
-            
-          </div>
+          {{#each current}}
+            {{>tracker_item}}
+          {{/each}}
         </div>
       </div>
       <div class="column">
-        <div class="ui segment">
-          <div class="ui top attached green label">
-            <i class="circular inverted green heart icon"></i> Backlog 
+        <div class="ui green inverted vertical menu fluid">
+          <div class="header item">
+            <i class="green heart icon" style="float:left; margin-left:-5px; margin-right:10px"></i> Backlog
           </div>
-          <div class="ui comments">
-            
-          </div>
+          {{#each backlog}}
+            <div class="item">{{name}}</div>
+          {{/each}}
         </div>
       </div>
       <div class="column">
-        <div class="ui segment">
-          <div class="ui top attached red label">
-            <i class="circular inverted red glass icon"></i> Cooler 
-
-            <div class="ui mini inverted basic test button add-button" style="float:right">
+        <div class="ui red inverted vertical menu fluid">
+          <div class="header item">
+            <i class="red beer icon" style="float:left; margin-left:-5px; margin-right:10px"></i> Cooler
+            <a class="ui inverted mini basic test button add-button" style="float:right; margin-top:-6px">
               Add
-            </div>
+            </a>
           </div>
-          <div class="ui comments">
-            
-          </div>
+          {{#each cooler}}
+            {{>tracker_item}}
+          {{/each}}
         </div>
       </div>
     </div>
