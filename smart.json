@@ -4,6 +4,8 @@
     "iron-router": {},
     "github-api": {},
     "moment": {},
-    "urlify2": {}
+    "urlify2": {},
+    "iron-router-progress": {},
+    "jquery-ui": {}
   }
 }

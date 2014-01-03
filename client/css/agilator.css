@@ -1,4 +1,14 @@
 /* CSS declarations go here */
+#iron-router-progress {
+    background-color : #57A4C3;
+    box-shadow       : 0 0 5px #4E93AF;
+}
+
+.ui.grid > .column, .ui.grid > .row > .column {
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+}
+
 body{
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   margin:0px;

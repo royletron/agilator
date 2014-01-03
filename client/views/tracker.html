@@ -1,15 +1,17 @@
 
 <template name="tracker">
-  <div class="container">
+  <div class="container small">
     <div class="ui three column grid">
       <div class="column">
         <div class="ui teal inverted vertical menu fluid">
           <div class="header item">
             <i class="teal users icon" style="float:left; margin-left:-5px; margin-right:10px"></i> Current
           </div>
-          {{#each current}}
-            {{>tracker_item}}
-          {{/each}}
+          <div id="current">
+            {{#each current}}
+              {{>tracker_item}}
+            {{/each}}
+          </div>
         </div>
       </div>
       <div class="column">
@@ -17,9 +19,11 @@
           <div class="header item">
             <i class="green heart icon" style="float:left; margin-left:-5px; margin-right:10px"></i> Backlog
           </div>
-          {{#each backlog}}
-            <div class="item">{{name}}</div>
-          {{/each}}
+          <div id="#backlog">
+            {{#each backlog}}
+              <div class="item">{{name}}</div>
+            {{/each}}
+          </div>
         </div>
       </div>
       <div class="column">
@@ -30,9 +34,11 @@
               Add
             </a>
           </div>
-          {{#each cooler}}
-            {{>tracker_item}}
-          {{/each}}
+          <div id="cooler">
+            {{#each cooler}}
+              {{>tracker_item}}
+            {{/each}}
+          </div>
         </div>
       </div>
     </div>

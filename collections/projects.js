@@ -19,7 +19,13 @@ Meteor.methods({
       createdat: moment().unix(),
       updatedat: moment().unix()
     });
-    Meteor.call('createUpdate', 'fork code', "created a new project called '"+name+"'", project._id, 'project')
+    Meteor.call('createUpdate', 'fork code', "created a new project called </strong>"+name+"</strong>", project._id, 'project')
     return project;
+  },
+  deleteProject: function(project)
+  {
+    var name = project.name;
+    Projects.remove({_id: project._id});
+    Meteor.call('createUpdate', 'trash', "deleted the project <strong>"+name+"</strong>");
   }
 })

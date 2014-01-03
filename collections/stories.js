@@ -6,6 +6,7 @@ Meteor.methods({
     var story = Stories.insert({
       name: name,
       status: "new",
+      position: 0,
       project: project._id,
       description: description,
       owner: Meteor.userId(),
@@ -18,7 +19,17 @@ Meteor.methods({
     Meteor.call('createUpdate', 'list', "added the story '"+name+"', to <strong>"+project.name+"</strong>", story._id, 'story')
     return story;
   },
+  changeStatus: function(story, status)
+  {
+    var story = Stories.update(story._id, {$set : {status: status, updatedat: moment().unix()}});
+    Meteor.call('createUpdate', 'checkmark', "changed the story status of <strong>"+story.name+"</strong>", story._id, 'story');
+    return story;
+  },
+  setOrder: function(id, position)
+  {
+    Stories.update(id, {$set: {position: position}});
+  },
   removeAllStories: function() {
-    return stories.remove({});
+    return Stories.remove({});
   }
 })

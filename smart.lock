@@ -6,7 +6,9 @@
       "iron-router": {},
       "github-api": {},
       "moment": {},
-      "urlify2": {}
+      "urlify2": {},
+      "iron-router-progress": {},
+      "jquery-ui": {}
     },
     "packages": {
       "semantic-ui-less": {
@@ -33,6 +35,16 @@
         "git": "https://github.com/peerlibrary/meteor-urlify2.git",
         "tag": "v0.1.1",
         "commit": "5b6677b01382e470bd22e6a4a8a0d4399d7900d7"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+      },
+      "jquery-ui": {
+        "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
+        "tag": "v1.9.2",
+        "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
       }
     }
   }

@@ -14,3 +14,5 @@ accounts-github
 github-api
 moment
 urlify2
+iron-router-progress
+jquery-ui

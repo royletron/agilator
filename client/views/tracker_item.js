@@ -19,6 +19,20 @@ Template.tracker_item.rejectedStatus = function(){
 Template.tracker_item.events({
   'click .start_button' : function(e, t)
   {
-    Stories.update(this._id, { $set: {status: 'started'} });
+    Meteor.call("changeStatus", this, "started", function(){
+      toastr.success("Started story "+this.name);
+    });
+  },
+  'click .finish_button' : function(e, t)
+  {
+    Meteor.call("changeStatus", this, "finished", function(){
+      toastr.success("Finished story "+this.name);
+    });
+  },
+  'click .deliver_button' : function(e, t)
+  {
+    Meteor.call("changeStatus", this, "delivered", function(){
+      toastr.success("Delivered story "+this.name);
+    })
   }
 })
