@@ -1,5 +1,6 @@
 {
   "packages": {
+    "page-js": {},
     "semantic-ui-less": {},
     "iron-router": {},
     "github-api": {},
