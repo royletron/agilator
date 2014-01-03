@@ -1,4 +1,7 @@
 {
+  "meteor": {
+    "tag": "v0.6.6.3" 
+  },
   "packages": {
     "page-js": {},
     "semantic-ui-less": {},
