@@ -1,0 +1,10 @@
+<template name="home_sub_menu">
+  {{#if currentUser}}
+  <a class="item{{ getSubActive 'dashboard' }}" href="/">
+    <i class="icon dashboard"></i> Dasboard
+  </a>
+  {{/if}}
+  <a class="item">
+    <i class="icon file"></i> News
+  </a>
+</template>

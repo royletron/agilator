@@ -54,12 +54,12 @@
               <div class="field"><!-- field -->
                 <label>Requester</label>
                 <div class="ui selection dropdown fluid">
-                  <input type="hidden" name="requester" id="story_requester" value="{{ currentUser._id }}">
+                  <input type="hidden" name="requester" id="story_requester" value="{{ currentUser.username }}">
                   <div class="text">{{ currentUser.profile.name }}</div>
                   <i class="dropdown icon"></i>
                   <div class="menu">
                     {{#each members}}
-                      <div class="item active" data-value="{{ id }}"><img class="circular ui image" src="{{ avatar }}" height="30" width="30" style="float:left; margin-top: -7px; margin-right:0.5em; height:30px; width:30px"> {{ name }}</div>
+                      <div class="item active" data-value="{{ username }}"><img class="circular ui image" src="{{ avatar }}" height="30" width="30" style="float:left; margin-top: -7px; margin-right:0.5em; height:30px; width:30px"> {{ name }}</div>
                     {{/each}}
                   </div><!-- menu -->
                 </div><!-- dropdown -->
@@ -67,12 +67,12 @@
               <div class="field"><!-- field -->
                 <label>Owner</label>
                 <div class="ui selection dropdown fluid">
-                  <input type="hidden" name="owner" id="story_owner" value="{{ currentUser._id }}">
+                  <input type="hidden" name="owner" id="story_owner" value="{{ currentUser.username }}">
                   <div class="text">{{ currentUser.profile.name }}</div>
                   <i class="dropdown icon"></i>
                   <div class="menu">
                     {{#each members}}
-                      <div class="item active" data-value="0"><img class="circular ui image" src="{{ avatar }}" height="30" width="30" style="float:left; margin-top: -7px; margin-right:0.5em; height:30px; width:30px"> {{ name }}</div>
+                      <div class="item active" data-value="{{ username }}"><img class="circular ui image" src="{{ avatar }}" height="30" width="30" style="float:left; margin-top: -7px; margin-right:0.5em; height:30px; width:30px"> {{ name }}</div>
                     {{/each}}
                   </div><!-- menu -->
                 </div><!-- dropdown -->

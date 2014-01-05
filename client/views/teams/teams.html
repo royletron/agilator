@@ -1,0 +1,47 @@
+<template name="teams">
+  <div class="container" style="padding-top:20px">    
+    <div class="ui two column grid">
+      <div class="top aligned row">
+        <div class="column">
+          <h4 class="ui top attached header">
+            Teams you own
+          </h4>
+          <div class="ui segment attached">
+            {{#if user_owned_teams}}
+              <div class="ui list">
+                {{#each user_owned_teams}}
+                <div class="item">
+                  <img class="ui avatar image" src="/images/demo/avatar2.jpg">
+                  <div class="content">
+                    <div class="header">{{name}}</div>
+                  </div> 
+                  <br>
+                  <div class="content">
+                    <p>
+                    {{members}}
+                    </p>
+                  </div>
+                {{/each}}
+              </div>
+            {{else}}
+              <p>You haven't created any teams yet</p>
+            {{/if}}
+          </div>
+        </div>
+        <div class="column">
+          <h4 class="ui top attached header">
+            Teams you belong to
+          </h4>
+          <div class="ui segment attached">
+            {{#if user_belongs_teams}}
+              <div class="ui fluid accordion">
+              </div>
+            {{else}}
+              <p>You don't belong to any teams yet</p>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

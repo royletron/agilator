@@ -1,32 +1,35 @@
-<template name="new_project_modal">
-  <div class="ui new_project modal transition">
+<template name="new_team_modal">
+  <div class="ui new_team modal transition">
     <i class="close icon"></i>
     <div class="header">
-      New Project
+      New Team
     </div>
     <div class="content">
       <div class="ui form">
         <div class="field">
-          <label>Project Name</label>
+          <label>Team Name</label>
           <div class="ui labeled input">
-            <input type="text" id="project_name">
+            <input type="text" id="team_name">
             <div class="ui corner label">
               <i class="icon asterisk"></i>
             </div>
           </div>
         </div>
         <div class="field">
-          <label>Project Description</label>
-          <textarea id="project_description"></textarea>
+          <label>Add Members</label>
+          <input type="text" id="team_member">
+          <div class="ui vertical menu fluid" style="margin-top:-2px; display:none;" id="return-members">
+          </div>
         </div>
+        <div id="selected-members"></div>
       </div>
     </div>
     <div class="actions">
       <div class="ui black button">
         Cancel
       </div>
-      <div class="ui positive right labeled icon button new_project_submit">
-        Add Project
+      <div class="ui positive right labeled icon button new_team_submit">
+        Add Team
         <i class="checkmark icon"></i>
       </div>
     </div>

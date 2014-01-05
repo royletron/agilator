@@ -9,7 +9,7 @@ Meteor.methods({
       position: 0,
       project: project._id,
       description: description,
-      owner: Meteor.userId(),
+      owner: Meteor.user().username,
       type: type,
       requester: requester,
       owner: owner,

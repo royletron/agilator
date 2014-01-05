@@ -4,7 +4,7 @@ Meteor.methods({
   createUpdate: function(type, details, item, item_type)
   {
     return Updates.insert({
-      user: Meteor.userId(),
+      user: Meteor.user().username,
       item: item,
       item_type: item_type,
       type: type,
@@ -14,7 +14,7 @@ Meteor.methods({
   },
   userUpdates: function()
   {
-    var updates = Updates.find({user: Meteor.userId()}, {sort: {createdat: -1}}).fetch();
+    var updates = Updates.find({user: Meteor.user().username}, {sort: {createdat: -1}}).fetch();
     for(var i = 0; i < updates.length; i++)
     {
       updates[i].user = Meteor.users.findOne(updates[i].user);

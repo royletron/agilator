@@ -1,0 +1,44 @@
+<template name="project">
+  <div class="container" style="padding-top:20px">
+    <h2 class="ui header">
+      <i class="circular inverted {{project.icon}} icon"></i>
+      <div class="content">
+        {{project.name}}
+        <div class="sub header">{{{project.description}}}</div>
+      </div>
+    </h2>
+    <h3>{{getCommentsLength project 'project'}}</h3>
+    <div class="ui attached message small">
+      <p style="margin-top:-2px;">
+        <img class="circular ui image" src="{{currentUser.profile.avatar_url}}" height="30" width="30" style="float:left; margin-right:10px; margin-top:-5px;">{{currentUser.profile.name}} says:
+      </p>
+    </div>
+    <div class="ui form attached fluid segment small">
+      <div class="field">
+        <div style="min0height:100px;" id="comment-body"></div>
+      </div>
+    </div>
+    <div class="ui bottom attached info message small">
+
+      <div class="ui mini secondary button" id="post-comment">
+        Post Comment
+      </div>
+    </div>
+    {{#each getComments project 'project'}}
+      <div class="ui attached message small">
+        <p style="margin-top:-2px;">
+          <img class="circular ui image" src="{{currentUser.profile.avatar_url}}" height="30" width="30" style="float:left; margin-right:10px; margin-top:-5px;">{{currentUser.profile.name}} said:
+        </p>
+      </div>
+      <div class="ui form attached fluid segment small pen">
+        {{{comment}}}
+      </div>
+      <div class="ui bottom attached info message small">
+        <i class="icon time"></i> Posted
+        <span class="date timeago" data-timestamp="{{createdat}}">
+          ago
+        </span>
+      </div>
+    {{/each}}
+  </div>
+</template>

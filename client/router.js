@@ -1,5 +1,6 @@
 Router.configure({
-  layoutTemplate: 'layout'
+  layoutTemplate: 'layout',
+  notFoundTemplate: '404'
 });
 
 Router.map(function () {
@@ -15,26 +16,52 @@ Router.map(function () {
       'home_sub_menu': {to: 'sub_menu'}
     },
     before: function() {
+      Session.set('currentpage', 'home')
       if(Meteor.user())
       {
-        var updates = Updates.find({user: Meteor.userId()}, {sort: {createdat: -1}}).fetch();
+        Session.set('currentsubpage', 'dashboard');
+        var updates = Updates.find({user: Meteor.user().username}, {sort: {createdat: -1}}).fetch();
         for(var i = 0; i < updates.length; i++)
         {
-          updates[i].user = Meteor.users.findOne(updates[i].user);
+          updates[i].user = Meteor.users.findOne({username: updates[i].user});
         }
         Session.set("user_updates", updates);
-        Session.set("user_projects", Projects.find({owner: Meteor.userId()}).fetch());
+        Session.set("user_projects", Projects.find({owner: Meteor.user().username}).fetch());
       }
     }
   });
 
-  this.route('tracker', {
+  this.route('project', {
     path: '/project/:slug',
+    yieldTemplates: {
+      'project_sub_menu': {to: 'sub_menu'}
+    },
+    before: function() {
+      Session.set('currentpage', 'home')
+      Session.set('currentsubpage', 'home');
+      if(Meteor.user())
+      {
+        var project = Projects.findOne({slug: this.params.slug});
+        Session.set("project", project)
+        Session.set("comments", Comments.find({type: 'project', item: project}))
+      }
+      else
+      {
+        Router.go('/')
+        Session.set("error_message", "You need to be logged in to do that!")
+      }
+    }
+  })
+
+  this.route('tracker', {
+    path: '/project/:slug/tracker',
     yieldTemplates: {
       'new_story_modal': {to: 'modal'},
       'project_sub_menu': {to: 'sub_menu'}
     },
     before: function() {
+      Session.set('currentpage', 'home');
+      Session.set('currentsubpage', 'tracker');
       if(Meteor.user())
       {
         Session.set("project", Projects.findOne({slug: this.params.slug}))
@@ -45,6 +72,29 @@ Router.map(function () {
         Session.set("error_message", "You need to be logged in to do that!")
       }
     }
+  });
+
+  this.route('teams', {
+    path: '/teams',
+    yieldTemplates: {
+      'new_team_modal': {to: 'modal'},
+      'teams_sub_menu': {to: 'sub_menu'}
+    },
+    before: function() {
+      Session.set('currentpage', 'teams')
+      if(Meteor.user())
+      {
+        Session.set("user_owned_teams", Teams.find({owner: Meteor.user().username}, {sort: {createdat: -1}}).fetch());
+        Session.set("user_member_teams", Teams.find({members: { $in: [Meteor.user().username]} }, {sort: {createdat: -1}}).fetch());
+      }
+    }
   })
 
 })
+
+function getUserInfo(data)
+{
+  $.each(data, function(idx, val){
+    console.log(val);
+  })
+}

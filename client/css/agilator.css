@@ -4,7 +4,12 @@
     box-shadow       : 0 0 5px #4E93AF;
 }
 
-.ui.grid > .column, .ui.grid > .row > .column {
+#return-members{
+  max-height:120px;
+  overflow-y: auto;
+}
+
+.ui.grid > .column.narrow, .ui.grid > .row > .column.narrow {
   padding-left: 0.5%;
   padding-right: 0.5%;
 }

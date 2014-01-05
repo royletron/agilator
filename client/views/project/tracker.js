@@ -19,13 +19,12 @@ Template.tracker.backlog = function(){
 Template.tracker.current = function(){
   return getStories({ project: Session.get('project')._id, status: {$not : 'new'} }, {sort: {position: 1}})
 }
-
 getStories = function(query, sort){
   if(sort == undefined)
     sort = {};
   var stories = Stories.find(query, sort).fetch();
   $.each(stories, function(idx, val){
-    val.user_info = Meteor.users.findOne(val.owner);
+    val.user_info = Meteor.users.findOne({username: val.owner});
   });
   console.log(stories);
   return stories;

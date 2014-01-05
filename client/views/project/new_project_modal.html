@@ -1,0 +1,49 @@
+<template name="new_project_modal">
+  <div class="ui new_project modal transition">
+    <i class="close icon"></i>
+    <div class="header">
+      New Project
+    </div>
+    <div class="content">
+      <div class="ui form">
+        <div class="field">
+          <label>Project Name</label>
+          <div class="ui labeled input">
+            <input type="text" id="project_name">
+            <div class="ui corner label">
+              <i class="icon asterisk"></i>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Project Description</label>
+          <textarea id="project_description"></textarea>
+        </div>
+        <div class="field">
+          <label>Project Team</label>
+          <div class="ui selection dropdown fluid">
+            {{#if default_team}}
+              <input type="hidden" name="type" id="project_team" value="{{default_team._id}}">
+                <div class="text">{{default_team.name}}</div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                {{#each teams}}
+                  <div class="item" data-value="{{_id}}">{{name}}</div>
+                {{/each}}
+              </div><!-- dropdown -->
+            {{/if}}
+          </div><!-- field -->
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui black button">
+        Cancel
+      </div>
+      <div class="ui positive right labeled icon button new_project_submit">
+        Add Project
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
+</template>

@@ -12,8 +12,14 @@ Template.home.rendered = function(){
   $modal.modal('attach events', '.launch_modal.button', 'show')
 }
 Template.home.user_name = function(user){
-  if(user._id == Meteor.userId())
-    return 'You'
-  else
-    return user.profile.name;
+  if(user != undefined)
+  {
+    if(user.username == Meteor.user().username)
+      return 'You'
+    else
+      return user.profile.name;
+  }
+  else{
+    return '?';
+  }
 }

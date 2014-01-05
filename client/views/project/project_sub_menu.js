@@ -16,3 +16,7 @@ Template.project_sub_menu.events({
       });
   }
 })
+
+Template.project_sub_menu.project_url = function(){
+  return '/project/'+Session.get('project').slug;
+}

@@ -3,6 +3,14 @@
     <i class="fork code icon"></i>
     Project: <strong>{{title}}</strong>
   </div>
+  <a class="item{{ getSubActive 'home' }}" href="{{project_url}}">
+    <i class="home icon"></i>
+    Project Home
+  </a>
+  <a class="item{{ getSubActive 'tracker' }}" href="{{project_url}}/tracker">
+    <i class="rocket icon"></i>
+    Tracker
+  </a>
   <a class="item" href="#" id="delete-button">
     <i class="trash icon"></i>
     Delete

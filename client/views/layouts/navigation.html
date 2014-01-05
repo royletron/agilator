@@ -7,8 +7,11 @@
           <!--<span class="ui teal label">New</span>-->
         </div>
         {{#if currentUser}}
-        <a class="active item" href="/">
+        <a class="item{{ getActive 'home' }}" href="/">
           <i class="home icon"></i> Home
+        </a>
+        <a class="item{{ getActive 'teams' }}" href="/teams">
+          <i class="icon sitemap"></i> Teams
         </a>
 
         <div class="right menu">

@@ -16,3 +16,4 @@ moment
 urlify2
 iron-router-progress
 jquery-ui
+external-file-loader
