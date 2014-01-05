@@ -9,7 +9,9 @@ Template.home.has_projects = function(){
 }
 Template.home.rendered = function(){
   $modal = $('.new_project.modal')
-  $modal.modal('attach events', '.launch_modal.button', 'show')
+  //console.log($modal);
+  if(Meteor.user())
+    $modal.modal('attach events', '.launch_modal.button', 'show')
 }
 Template.home.user_name = function(user){
   if(user != undefined)
