@@ -29,6 +29,12 @@ Handlebars.registerHelper("getSubActive", function(name) {
     return '';
 });
 
+Handlebars.registerHelper("getUserAvatar", function(username) {
+  var user = Meteor.users.findOne({username: username});
+  if(user != undefined)
+    return user.profile.avatar_url
+});
+
 Handlebars.registerHelper("getComments", function(item, type){
   var comments = Comments.find({item: item._id, type: type}, {sort: {createdat: -1}}).fetch();
   if(comments.length == 0)

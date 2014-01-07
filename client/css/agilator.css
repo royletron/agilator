@@ -9,6 +9,10 @@
   overflow-y: auto;
 }
 
+.connected, #current{
+  min-height: 42px;
+}
+
 .ui.grid > .column.narrow, .ui.grid > .row > .column.narrow {
   padding-left: 0.5%;
   padding-right: 0.5%;

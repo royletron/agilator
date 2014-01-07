@@ -64,7 +64,18 @@ Router.map(function () {
       Session.set('currentsubpage', 'tracker');
       if(Meteor.user())
       {
-        Session.set("project", Projects.findOne({slug: this.params.slug}))
+        var project = Projects.findOne({slug: this.params.slug})
+        Session.set("project", project);
+        var stories = Stories.find({project: project._id}).fetch();
+        $.each(stories, function(idx, val){
+          //console.log(val);
+          val.user_info = Meteor.users.findOne({username: val.owner});
+          if(val.user_info == null)
+            Meteor.call("getGithubMember", val.owner, function(err, user){
+              console.log("!"+user);
+              Session.set("user_"+val.owner, user);
+            });
+        })
       }
       else
       {
@@ -85,7 +96,11 @@ Router.map(function () {
       if(Meteor.user())
       {
         Session.set("user_owned_teams", Teams.find({owner: Meteor.user().username}, {sort: {createdat: -1}}).fetch());
-        Session.set("user_member_teams", Teams.find({members: { $in: [Meteor.user().username]} }, {sort: {createdat: -1}}).fetch());
+        var mteams = Teams.find({members: { $in: [Meteor.user().username]} }, {sort: {createdat: -1}}).fetch();
+        $.each(mteams, function(idx, val){
+          val.owner_info = Meteor.users.findOne({username: val.owner});
+        });
+        Session.set("user_member_teams", mteams);
       }
     }
   })
@@ -95,6 +110,6 @@ Router.map(function () {
 function getUserInfo(data)
 {
   $.each(data, function(idx, val){
-    console.log(val);
+    //console.log(val);
   })
 }

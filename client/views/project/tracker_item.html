@@ -1,12 +1,12 @@
 <template name="tracker_item">
   {{#if newStatus}}
-    <div class="item" data-id="{{_id}}"><a class="ui mini black button start_button" style="float:right; margin-top:-6px;">Start</a><img class="circular ui image" src="{{user_info.profile.avatar_url}}" height="30" width="30" style="float:left; margin-top: -7px; margin-right:0.5em; height:30px; width:30px"> {{name}}</div>
+    <div class="item" data-id="{{_id}}"><a class="ui mini black button start_button" style="float:right; margin-top:-6px;">Start</a>{{>tracker_insides}}</div>
   {{/if}}
   {{#if startedStatus}}
-    <div class="item" data-id="{{_id}}"><a class="ui mini orange button finish_button" style="float:right; margin-top:-6px;">Finish</a><img class="circular ui image" src="{{user_info.profile.avatar_url}}" height="30" width="30" style="float:left; margin-top: -7px; margin-right:0.5em; height:30px; width:30px"> {{name}}</div>
+    <div class="item" data-id="{{_id}}"><a class="ui mini orange button finish_button" style="float:right; margin-top:-6px;">Finish</a>{{>tracker_insides}}</div>
   {{/if}}
   {{#if finishedStatus}}
-    <div class="item" data-id="{{_id}}"><a class="ui mini purple button deliver_button" style="float:right; margin-top:-6px;">Deliver</a><img class="circular ui image" src="{{user_info.profile.avatar_url}}" height="30" width="30" style="float:left; margin-top: -7px; margin-right:0.5em; height:30px; width:30px"> {{name}}</div>
+    <div class="item" data-id="{{_id}}"><a class="ui mini purple button deliver_button" style="float:right; margin-top:-6px;">Deliver</a>{{>tracker_insides}}</div>
   {{/if}}
   {{#if deliveredStatus}}
     <div class="item" data-id="{{_id}}">
@@ -16,4 +16,10 @@
         <a class="ui green button accept_button"><i class="ui thumbs down icon"></i></a>
       </div> {{name}}</div>
   {{/if}}
+</template>
+
+<template name="tracker_insides">
+  <img class="circular ui image" src="{{user_avatar}}" height="24" width="24" style="float:left; margin-top: -3px; height:24px; width:24px"> 
+  <a class="ui small circular label" style="float:left; margin-top:-4px;margin-right:0.5em;">{{points}}</a>
+  {{name}}
 </template>

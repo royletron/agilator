@@ -18,9 +18,8 @@ Meteor.methods({
     });
     return "HEY"
   },
-  updateUser: function()
+  getGithubMember: function(username)
   {
-    var username = Meteor.user().services.github.username
     github.authenticate({
       type: "oauth",
       token: Meteor.user().services.github.accessToken
@@ -29,7 +28,6 @@ Meteor.methods({
       user: username
     });
     var name = user.name
-    console.log(name);
     if(name == undefined)
       name = username
     return({name: name, avatar_url: user.avatar_url});

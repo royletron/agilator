@@ -1,11 +1,12 @@
 Stories = new Meteor.Collection('stories')
 
 Meteor.methods({
-  createStory: function(project, name, description, type, requester, owner)
+  createStory: function(project, name, description, type, points, requester, owner)
   {
     var story = Stories.insert({
       name: name,
       status: "new",
+      points: points,
       position: 0,
       project: project._id,
       description: description,
@@ -25,9 +26,12 @@ Meteor.methods({
     Meteor.call('createUpdate', 'checkmark', "changed the story status of <strong>"+story.name+"</strong>", story._id, 'story');
     return story;
   },
-  setOrder: function(id, position)
+  setOrder: function(id, position, status)
   {
-    Stories.update(id, {$set: {position: position}});
+    if(status == undefined)
+      Stories.update(id, {$set: {position: position}});
+    else
+      Stories.update(id, {$set: {position: position, status: status}});
   },
   removeAllStories: function() {
     return Stories.remove({});

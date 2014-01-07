@@ -12,7 +12,7 @@ Template.navigation.events({
       if (err)
         Session.set('errorMessage', err.reason || 'Unknown error');
       else
-        Meteor.call('updateUser', '', function(err, val){
+        Meteor.call('getGithubMember', Meteor.user().username, function(err, val){
           toastr.success("Logged in!")
           if(val != undefined)
           {

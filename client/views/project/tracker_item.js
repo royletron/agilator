@@ -1,5 +1,5 @@
 Template.tracker_item.newStatus = function(){
-  return this.status === "new"
+  return ((this.status === "new") || (this.status === "todo"))
 }
 Template.tracker_item.startedStatus = function(){
   return this.status === "started"
@@ -19,6 +19,7 @@ Template.tracker_item.rejectedStatus = function(){
 Template.tracker_item.events({
   'click .start_button' : function(e, t)
   {
+    //console.log(this);
     Meteor.call("changeStatus", this, "started", function(){
       toastr.success("Started story "+this.name);
     });
@@ -36,3 +37,11 @@ Template.tracker_item.events({
     })
   }
 })
+
+Template.tracker_insides.user_avatar = function(){
+  console.log(this.user_info);
+  if(this.user_info.profile != undefined)
+    return this.user_info.profile.avatar_url;
+  else
+    return Session.get("user_"+this.owner).avatar_url
+}

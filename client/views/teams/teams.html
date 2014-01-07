@@ -11,7 +11,7 @@
               <div class="ui list">
                 {{#each user_owned_teams}}
                 <div class="item">
-                  <img class="ui avatar image" src="/images/demo/avatar2.jpg">
+                  <img class="ui avatar image" src="{{getUserAvatar owner}}">
                   <div class="content">
                     <div class="header">{{name}}</div>
                   </div> 
@@ -33,8 +33,21 @@
             Teams you belong to
           </h4>
           <div class="ui segment attached">
-            {{#if user_belongs_teams}}
-              <div class="ui fluid accordion">
+            {{#if user_member_teams}}
+              <div class="ui list">
+                {{#each user_member_teams}}
+                <div class="item">
+                  <img class="ui avatar image" src="{{getUserAvatar owner}}">
+                  <div class="content">
+                    <div class="header">{{name}}</div>
+                  </div> 
+                  <br>
+                  <div class="content">
+                    <p>
+                    {{members}}
+                    </p>
+                  </div>
+                {{/each}}
               </div>
             {{else}}
               <p>You don't belong to any teams yet</p>

@@ -2,9 +2,11 @@
   <div class="container">
     <div class="ui three column grid">
       <div class="column narrow">
-        <div class="ui teal inverted vertical menu fluid">
+        <div class="ui teal inverted vertical small menu fluid">
           <div class="header item">
-            <i class="teal users icon" style="float:left; margin-left:-5px; margin-right:10px"></i> Current
+            <i class="teal users icon" style="float:left; margin-left:-5px"></i>
+            <a class="ui small teal inverted circular label" style="float:left; margin-top:-5px;margin-right:10px">{{current_points}}</a>
+            Current
           </div>
           <div id="current">
             {{#each current}}
@@ -14,26 +16,30 @@
         </div>
       </div>
       <div class="column narrow">
-        <div class="ui green inverted vertical menu fluid">
+        <div class="ui green inverted vertical small menu fluid">
           <div class="header item">
-            <i class="green heart icon" style="float:left; margin-left:-5px; margin-right:10px"></i> Backlog
+            <i class="green heart icon" style="float:left; margin-left:-5px;"></i>
+            <a class="ui small green inverted circular label" style="float:left; margin-top:-5px;margin-right:10px">{{backlog_points}}</a>
+            Backlog
           </div>
-          <div id="#backlog">
+          <div id="backlog" class="connected">
             {{#each backlog}}
-              <div class="item">{{name}}</div>
+              {{>tracker_item}}
             {{/each}}
           </div>
         </div>
       </div>
       <div class="column narrow">
-        <div class="ui red inverted vertical menu fluid">
+        <div class="ui red inverted vertical small menu fluid">
           <div class="header item">
-            <i class="red beer icon" style="float:left; margin-left:-5px; margin-right:10px"></i> Cooler
+            <i class="red beer icon" style="float:left; margin-left:-5px;"></i>
+            <a class="ui small red inverted circular label" style="float:left; margin-top:-5px;margin-right:10px">{{cooler_points}}</a>
+             Cooler
             <a class="ui inverted mini basic test button add-button" style="float:right; margin-top:-6px">
               Add
             </a>
           </div>
-          <div id="cooler">
+          <div id="cooler" class="connected">
             {{#each cooler}}
               {{>tracker_item}}
             {{/each}}
