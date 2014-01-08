@@ -27,6 +27,12 @@ Router.map(function () {
         }
         Session.set("user_updates", updates);
         Session.set("user_projects", Projects.find({owner: Meteor.user().username}).fetch());
+        var teams = [];
+        $.each(Teams.find({ $or: [{owner: 'royletron'}, { members: { $in: ['royletron'] }  }] }).fetch(), function(idx, val){
+          //console.log(val);
+          teams.push(val._id);
+        });
+        Session.set("team_projects", Projects.find({$and: [{team: {$in: teams}, owner: { $not: Meteor.user().username } }]}).fetch())
       }
     }
   });

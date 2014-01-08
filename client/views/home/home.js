@@ -4,6 +4,12 @@ Template.home.updates = function(){
 Template.home.user_projects = function(){
   return Session.get("user_projects")
 }
+Template.home.team_projects = function(){
+  if(Session.get("team_projects").length != 0)
+    return Session.get("team_projects")
+  else
+    return false;
+}
 Template.home.has_projects = function(){
   return(Session.get("user_projects").length > 0)
 }

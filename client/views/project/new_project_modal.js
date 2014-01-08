@@ -18,12 +18,12 @@ Template.new_project_modal.events({
 
 Template.new_project_modal.teams = function(){
   if(Meteor.user())
-    return Teams.find({owner: Meteor.user().username}).fetch();
+    return Teams.find({ $or: [{owner: 'royletron'}, { members: { $in: ['royletron'] }  }] }).fetch();
 }
 
 Template.new_project_modal.default_team = function(){
   if(Meteor.user())
-    var team = Teams.findOne({owner: Meteor.user().username});
+    var team = Teams.findOne({ $or: [{owner: 'royletron'}, { members: { $in: ['royletron'] }  }] });
   if(team == null)
     return false;
   else

@@ -36,13 +36,7 @@
               {{#if has_projects}}
                 <div class="ui list" style="margin-bottom:20px">
                   {{#each user_projects}}
-                    <div class="item">
-                      <i class="{{icon}} icon"></i>
-                      <div class="content">
-                        <a class="header" href="/project/{{slug}}">{{name}}</a>
-                        <div class="description">{{description}}</div>
-                      </div>
-                    </div>
+                    {{>project_line}}
                   {{/each}}
                 </div>
               {{else}}
@@ -53,11 +47,33 @@
                 Create new Project
               </div>
             </div>
+            <div class="ui secondary stacked segment">
+              <h2>Teams Projects</h2>
+              {{#if team_projects}}
+                <div class="ui list" style="margin-bottom:20px">
+                  {{#each team_projects}}
+                    {{>project_line}}
+                  {{/each}}
+                </div>
+              {{else}}
+                <p>There are no projects for any of your teams.</p>
+              {{/if}}
+            </div>
           </div>
         </div>
       {{else}}
 
       {{/if}}
+    </div>
+  </div>
+</template>
+
+<template name="project_line">
+  <div class="item">
+    <i class="{{icon}} icon"></i>
+    <div class="content">
+      <a class="header" href="/project/{{slug}}">{{name}}</a>
+      <div class="description">{{description}}</div>
     </div>
   </div>
 </template>

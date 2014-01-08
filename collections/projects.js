@@ -28,7 +28,13 @@ Meteor.methods({
   deleteProject: function(project)
   {
     var name = project.name;
-    Projects.remove({_id: project._id});
-    Meteor.call('createUpdate', 'trash', "deleted the project <strong>"+name+"</strong>");
+    if(project.owner == Meteor.user().username)
+    {
+      Projects.remove({_id: project._id});
+      Meteor.call('createUpdate', 'trash', "deleted the project <strong>"+name+"</strong>");
+    }
+    else{
+      toastr.error("You don't own this project!")
+    }
   }
 })

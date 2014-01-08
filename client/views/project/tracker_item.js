@@ -39,9 +39,11 @@ Template.tracker_item.events({
 })
 
 Template.tracker_insides.user_avatar = function(){
-  console.log(this.user_info);
-  if(this.user_info.profile != undefined)
-    return this.user_info.profile.avatar_url;
-  else
-    return Session.get("user_"+this.owner).avatar_url
+  if(this.user_info!= undefined)
+  {
+    if(this.user_info.profile != undefined)
+      return this.user_info.profile.avatar_url;
+    else
+      return Session.get("user_"+this.owner).avatar_url
+  }
 }

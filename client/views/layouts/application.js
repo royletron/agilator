@@ -14,6 +14,10 @@ showModal = function(header, body, accept, decline){
   }).modal('show');
 }
 
+Handlebars.registerHelper("isProjectOwner", function(){
+  return Session.get('project').owner == Meteor.user().username;
+})
+
 Handlebars.registerHelper("getActive", function(name) {
   console.log(name +": "+Session.get('currentpage'))
   if(name == Session.get('currentpage'))
