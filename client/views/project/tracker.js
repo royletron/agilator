@@ -1,5 +1,5 @@
 Template.tracker.rendered = function(){
-  $('.new_story.modal').modal('attach events', '.test.button', 'show')
+  //$('.new_story.modal').modal('attach events', '.test.button', 'show')
   $(document).ready(function(){
     $( "#cooler, #backlog" ).sortable({
       connectWith: ".connected",
@@ -19,8 +19,30 @@ Template.tracker.rendered = function(){
         });
       }
     });
+    $('.new_story.modal').modal('setting', {
+      onShow : function() {
+        //window.alert('Show!!');
+        jigItem('#story_type')
+        jigItem('#story_points')
+        jigItem('#story_requester')
+        jigItem('#story_owner')
+      }
+    })
   });
 }
+jigItem = function(el){
+  $(el).parent().find('.text').html($(el).parent().find("[data-value='"+$(el).val()+"']").text());
+}
+Template.tracker.events({
+  'click .test.button': function(e,t){
+    Session.set('current_story', '')
+    $('.edit_story_submit').hide();
+    $('.new_story_submit').show();
+    $('#story_id').val('');
+    $('#story_header').html('New Story');
+    $('.new_story.modal').modal('show');
+  }
+})
 Template.tracker.cooler = function(){
   return cooler();
 }

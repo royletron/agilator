@@ -78,7 +78,7 @@ Router.map(function () {
           val.user_info = Meteor.users.findOne({username: val.owner});
           if(val.user_info == null)
             Meteor.call("getGithubMember", val.owner, function(err, user){
-              console.log("!"+user);
+              //console.log("!"+user);
               Session.set("user_"+val.owner, user);
             });
         })

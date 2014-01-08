@@ -20,10 +20,6 @@ Meteor.methods({
   },
   getGithubMember: function(username)
   {
-    github.authenticate({
-      type: "oauth",
-      token: Meteor.user().services.github.accessToken
-    });
     user = github.user.getFrom({
       user: username
     });
@@ -34,10 +30,6 @@ Meteor.methods({
   },
   getGithubMembers: function(keyword)
   {
-    github.authenticate({
-      type: "oauth",
-      token: Meteor.user().services.github.accessToken
-    });
     var users = github.search.users({keyword: keyword})
     return(users);
   }

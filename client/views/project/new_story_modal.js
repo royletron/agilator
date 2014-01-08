@@ -40,7 +40,15 @@ Template.new_story_modal.events({
 
     }
     else{
-      Meteor.call('createStory', Session.get('project'), $('#story_name').val(), $('#story_description').val(), $('#story_type').val(), $('#story_points').val(), $('#story_requester').val(), $('#story_owner').val())
+      Meteor.call('createStory', Session.get('project'), $('#story_name').val(), $('#story_description').val(), $('#story_type').val(), $('#story_points').val(), $('#story_requester').val(), $('#story_owner').val(), function(){
+        toastr.success('Created story');
+      })
     }
+  },
+  'click .edit_story_submit' : function(e, t)
+  {
+    Meteor.call('updateStory', Session.get('current_story'), $('#story_name').val(), $('#story_description').val(), $('#story_type').val(), $('#story_points').val(), $('#story_requester').val(), $('#story_owner').val(), function(){
+      toastr.success('Updated story');
+    })
   }
 })

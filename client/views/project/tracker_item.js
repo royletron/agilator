@@ -35,6 +35,22 @@ Template.tracker_item.events({
     Meteor.call("changeStatus", this, "delivered", function(){
       toastr.success("Delivered story "+this.name);
     })
+  },
+  'click .item_text' : function(e,t)
+  {
+    //console.log('click');
+    Session.set('current_story', this);
+    $('.edit_story_submit').show();
+    $('.new_story_submit').hide();
+    $('#story_id').val(this._id);
+    $('#story_header').html('Edit Story');
+    $('#story_name').val(this.name)
+    $('#story_description').val(this.description)
+    $('#story_type').val(this.type)
+    $('#story_points').val(this.points)
+    $('#story_requester').val(this.requester)
+    $('#story_owner').val(this.owner)
+    $('.new_story.modal').modal('show');
   }
 })
 

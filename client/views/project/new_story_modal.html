@@ -1,7 +1,7 @@
 <template name="new_story_modal">
   <div class="ui new_story modal transition">
     <i class="close icon"></i>
-    <div class="header">
+    <div class="header" id="story_header">
       New Story
     </div>
     <div class="content">
@@ -13,6 +13,7 @@
                 <label>Name</label>
                 <div class="ui labeled input">
                   <input type="text" id="story_name">
+                  <input type="hidden" id="story_id" value="">
                   <div class="ui corner label">
                     <i class="icon asterisk"></i>
                   </div>
@@ -86,6 +87,10 @@
     <div class="actions">
       <div class="ui black button">
         Cancel
+      </div>
+      <div class="ui positive right labeled icon button edit_story_submit" style="display:none;">
+        Edit Project
+        <i class="checkmark icon"></i>
       </div>
       <div class="ui positive right labeled icon button new_story_submit">
         Add Project

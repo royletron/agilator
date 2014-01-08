@@ -10,7 +10,6 @@ Meteor.methods({
       position: 0,
       project: project._id,
       description: description,
-      owner: Meteor.user().username,
       type: type,
       requester: requester,
       owner: owner,
@@ -18,6 +17,20 @@ Meteor.methods({
       updatedat: moment().unix()
     });
     Meteor.call('createUpdate', 'list', "added the story '"+name+"', to <strong>"+project.name+"</strong>", story._id, 'story')
+    return story;
+  },
+  updateStory: function(story, name, description, type, points, requester, owner)
+  {
+    var story = Stories.update(story._id, {$set: {
+      name: name,
+      points: points,
+      description: description,
+      type: type,
+      requester: requester,
+      owner: owner,
+      updatedat: moment().unix()
+    }});
+    //Meteor.call('createUpdate', 'list', "added the story '"+name+"', to <strong>"+project.name+"</strong>", story._id, 'story')
     return story;
   },
   changeStatus: function(story, status)
